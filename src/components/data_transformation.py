@@ -21,7 +21,7 @@ They are typically used to store information that will be passed between differe
 
 @dataclass 
 class DataTransformationConfig:
-    preprocessor_obj_file_path = os.path.join('aritfacts' , 'preprocessor.pkl')
+    preprocessor_obj_file_path = os.path.join('aritfacts/' , 'preprocessor.pkl')
 
 class DataTransformation:
     def __init__(self):
@@ -75,16 +75,14 @@ class DataTransformation:
             raise CustomException(e,sys)
         
     def initiate_data_transformation(self,train_path,test_path):
-        
         try:
             train_df = pd.read_csv(train_path)
             test_df = pd.read_csv(test_path)
 
             logging.info('Read train and test data completed')
 
-            logging.info('Obtaining preprocessig object')
-
             preprocessing_obj = self.get_data_transformer_object()
+            logging.info('Obtained the preprocessig object')
 
             target_column_name = 'math_score'
             numerical_columns = ['writing_score' , 'reading_score']
@@ -116,13 +114,8 @@ class DataTransformation:
 
             return (
                 train_arr,
-                test_arr,
-                self.data_transformation_config.preprocessor_obj_file_path
+                test_arr
             )
 
         except Exception as e:
             raise CustomException(e,sys)
-        
-
-
-            

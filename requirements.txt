@@ -5,4 +5,5 @@ scikit-learn
 matplotlib
 sklearn
 dill
+tqdm
 #-e .
