@@ -6,4 +6,5 @@ matplotlib
 sklearn
 dill
 tqdm
+Flask
 #-e .

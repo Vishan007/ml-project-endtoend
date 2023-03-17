@@ -21,7 +21,8 @@ They are typically used to store information that will be passed between differe
 
 @dataclass 
 class DataTransformationConfig:
-    preprocessor_obj_file_path = os.path.join('aritfacts/' , 'preprocessor.pkl')
+    path = r'C:\Users\HP\Desktop\Projects\mlproject\artifacts'
+    preprocessor_obj_file_path = os.path.join( path , 'preprocessor.pkl')
 
 class DataTransformation:
     def __init__(self):
@@ -40,7 +41,6 @@ class DataTransformation:
                 'lunch',
                 'test_preparation_course'
             ]
-
             num_pipeline = Pipeline(
                 steps=[
                 ('imputer' ,SimpleImputer(strategy='median')),
@@ -52,7 +52,7 @@ class DataTransformation:
                 
                 steps=[
                 ("imputer",SimpleImputer(strategy='most_frequent')),
-                ('one_hot_incoder',OneHotEncoder())
+                ('one_hot_incoder',OneHotEncoder(handle_unknown='ignore'))
                 ]
 
             )
